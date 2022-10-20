@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Holds information for a user's routine.
  * 
@@ -6,10 +8,12 @@
  */
 public class Routine {
     
+    private ArrayList<Exercise> exercises;
+
     /**
      * Constructor
      */
     public Routine() {
-        
+
     }
 }

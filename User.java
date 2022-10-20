@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * User for the workout application.
  * 
@@ -8,37 +10,71 @@ public class User {
 
     private String firstname;
     private String lastname;
-    private String[] routines;
+    private ArrayList<Routine> routines;
 
     /**
-     * Constructor - firstname and lastname required
+     * Initialise the user - firstname and lastname required at minimum
+     * 
+     * @param firstname
+     *          User's first name, e.g. John
+     * @param lastname
+     *          User's last name, e.g. Doe
      */
     public User(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.routines = new String[5];
+        this.routines = new ArrayList<Routine>();
     }
 
     /**
-     * Retrieve user's first name
+     * @return user's first name
      */
     public String getFirstName() {
-        return this.firstname;
+        return firstname;
     }
 
     /**
-     * Retrieve user's last name
+     * @return user's last name
      */
     public String getLastName() {
-        return this.lastname;
+        return lastname;
     }
 
     /**
-     * Retrieve user's workout routines
+     * @return user's workout routines
      */
-    public String[] getRoutines() {
-        return this.routines;
+    public ArrayList<Routine> getRoutines() {
+        return routines;
     }
 
+    /**
+     * Change the user's first name
+     * 
+     * @param firstname
+     *          User's first name, e.g. John
+     */
+    public void setFirstName(String firstname) {
+        this.firstname = firstname;
+    }
+
+    /**
+     * Change the user's last name
+     * 
+     * @param lastname
+     *          User's last name, e.g. Doe
+     */
+    public void setLastName(String lastname) {
+        this.lastname = lastname;
+    }
+
+    /**
+     * Change the user's workout routines
+     * 
+     * @param routines
+     *          ArrayList of routines containing exercises
+     */
+    public void setRoutines(ArrayList<Routine> routines) {
+        this.routines = routines;
+    }
 
 }
