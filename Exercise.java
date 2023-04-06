@@ -1,7 +1,7 @@
 
 /**
  * 
- * @version 10.20.2022
+ * @version 04.06.2022
  * @author Tim Asher
  */
 public class Exercise {
@@ -82,5 +82,14 @@ public class Exercise {
      */
     public void setReps(int reps) {
         this.reps = reps;
+    }
+
+    /**
+     * 
+     */
+    public String toString() {
+        String str = this.exerciseName + "\t" + this.bodyPart + "\t"
+            + this.sets + "\t" + this.reps + "\n";
+        return str;
     }
 }

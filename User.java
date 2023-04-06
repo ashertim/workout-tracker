@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+// import java.util.HashMap;
+// import java.util.Map;
 
 /**
  * User for the workout application.
  * 
- * @version 10.20.2022
+ * @version 04.06.2023
  * @author Tim Asher
  */
 public class User {
@@ -11,6 +13,7 @@ public class User {
     private String firstname;
     private String lastname;
     private ArrayList<Routine> routines;
+    // private Map<String, Integer> personalRecords; // Map name of exercise to 
 
     /**
      * Initialise the user - firstname and lastname required at minimum
@@ -24,6 +27,7 @@ public class User {
         this.firstname = firstname;
         this.lastname = lastname;
         this.routines = new ArrayList<Routine>();
+        // this.personalRecords = new HashMap<>();
     }
 
     /**
@@ -45,6 +49,14 @@ public class User {
      */
     public ArrayList<Routine> getRoutines() {
         return routines;
+    }
+
+    /**
+     * 
+     * @param r
+     */
+    public void addRoutine(Routine r) {
+        routines.add(r);
     }
 
     /**
@@ -76,5 +88,7 @@ public class User {
     public void setRoutines(ArrayList<Routine> routines) {
         this.routines = routines;
     }
+
+
 
 }
