@@ -10,38 +10,27 @@ import java.util.ArrayList;
  */
 public class User {
 
-    private String firstname;
-    private String lastname;
+    private String username;
     private ArrayList<Routine> routines;
     // private Map<String, Integer> personalRecords; // Map name of exercise to 
 
     /**
      * Initialise the user - firstname and lastname required at minimum
      * 
-     * @param firstname
-     *          User's first name, e.g. John
-     * @param lastname
-     *          User's last name, e.g. Doe
+     * @param username
+     *          Unique username; e.g. johndoe
      */
-    public User(String firstname, String lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public User(String username) {
+        this.username = username;
         this.routines = new ArrayList<Routine>();
         // this.personalRecords = new HashMap<>();
     }
 
     /**
-     * @return user's first name
+     * @return username
      */
-    public String getFirstName() {
-        return firstname;
-    }
-
-    /**
-     * @return user's last name
-     */
-    public String getLastName() {
-        return lastname;
+    public String getUsername() {
+        return username;
     }
 
     /**
@@ -60,23 +49,13 @@ public class User {
     }
 
     /**
-     * Change the user's first name
+     * Change the username
      * 
-     * @param firstname
-     *          User's first name, e.g. John
+     * @param username
+     *          Unique username; e.g. johndoe
      */
-    public void setFirstName(String firstname) {
-        this.firstname = firstname;
-    }
-
-    /**
-     * Change the user's last name
-     * 
-     * @param lastname
-     *          User's last name, e.g. Doe
-     */
-    public void setLastName(String lastname) {
-        this.lastname = lastname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -89,6 +68,12 @@ public class User {
         this.routines = routines;
     }
 
+    /**
+     * 
+     */
+    public String toString() {
+        return this.username + "\n" + this.routines.toString();
+    }
 
 
 }
