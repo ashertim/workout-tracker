@@ -72,7 +72,7 @@ public class User {
      * 
      */
     public String toString() {
-        return this.username + "\n" + this.routines.toString();
+        return this.username + "'s routines:\n" + this.routines.toString();
     }
 
 

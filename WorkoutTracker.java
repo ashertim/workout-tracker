@@ -15,8 +15,14 @@ public class WorkoutTracker {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        boolean first = true;
+        User user = null;
+
         while (true) {
-            System.out.println("Welcome to Tim's Workout Tracker App Prototype! What would you like to do?");
+            if (first) {
+                System.out.println("Welcome to Tim's Workout Tracker App Prototype! What would you like to do?");
+                first = false;
+            }
             System.out.println("1. Create User");
             System.out.println("2. Select User");
             System.out.println("3. View Workout Routine");
@@ -30,7 +36,10 @@ public class WorkoutTracker {
                     createUser(scanner);
                     break;
                 case 2:
-                    selectUser(scanner);
+                    user = selectUser(scanner);
+                    break;
+                case 3:
+                    userRoutine(user, scanner);
                     break;
                 case 5:
                     System.exit(0);
@@ -64,8 +73,13 @@ public class WorkoutTracker {
     /**
      * 
      * @param scanner
+     * @return
      */
-    private static void selectUser(Scanner scanner) {
+    private static User selectUser(Scanner scanner) {
+        if (users.isEmpty()) {
+            System.out.println("No users in system. Please create a user.");
+            return null;
+        }
         System.out.println("Current users in system:");
         for (String username : users.keySet()) {
             System.out.println(username);
@@ -73,11 +87,26 @@ public class WorkoutTracker {
         System.out.print("Enter username to select: ");
         String username = scanner.next();
 
-        if (!users.containsKey(username)) {
-            System.out.println("User not found. Please create a new user.");
-            return;
+        while (!users.containsKey(username)) {
+            System.out.println("User not found. Please select an existing user: ");
+            username = scanner.next();
         }
 
         System.out.println("User selected: " + username);
+        return users.get(username);
+    }
+
+    /**
+     * 
+     * @param user
+     * @param scanner
+     */
+    private static void userRoutine(User user, Scanner scanner) {
+        if (user != null) {
+            System.out.println(user.toString());
+        }
+        else {
+            System.out.println("No user selected.");
+        }
     }
 }
