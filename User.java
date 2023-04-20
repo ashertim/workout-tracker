@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * User for the workout application.
  * 
- * @version 04.06.2023
+ * @version 04.19.2023
  * @author Tim Asher
  */
 public class User {
@@ -38,6 +38,20 @@ public class User {
      */
     public ArrayList<Routine> getRoutines() {
         return routines;
+    }
+
+    /**
+     * 
+     * @param id
+     * @return
+     */
+    public Routine getRoutineById(String id) {
+        for (Routine r : routines) {
+            if (r.getId() == id) {
+                return r;
+            }
+        }
+        return null;
     }
 
     /**

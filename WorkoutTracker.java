@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Text-based program for now
  * 
- * @version 04.06.2023
+ * @version 04.19.2023
  * @author Tim Asher
  */
 public class WorkoutTracker {
@@ -25,8 +25,8 @@ public class WorkoutTracker {
             }
             System.out.println("1. Create User");
             System.out.println("2. Select User");
-            System.out.println("3. View Workout Routine");
-            System.out.println("4. Add Workout Progress");
+            System.out.println("3. View User's Workout Routine(s)");
+            System.out.println("4. Create New Workout Routine");
             System.out.println("5. Exit");
 
             int choice = scanner.nextInt();
@@ -39,7 +39,10 @@ public class WorkoutTracker {
                     user = selectUser(scanner);
                     break;
                 case 3:
-                    userRoutine(user, scanner);
+                    userRoutine(user);
+                    break;
+                case 4:
+                    createRoutine(user, scanner);
                     break;
                 case 5:
                     System.exit(0);
@@ -101,9 +104,52 @@ public class WorkoutTracker {
      * @param user
      * @param scanner
      */
-    private static void userRoutine(User user, Scanner scanner) {
+    private static void userRoutine(User user) {
         if (user != null) {
             System.out.println(user.toString());
+        }
+        else {
+            System.out.println("No user selected.");
+        }
+    }
+
+    /**
+     * 
+     * @param user
+     * @param scanner
+     */
+    private static void createRoutine(User user, Scanner scanner) {
+        if (user != null) {
+            System.out.println("New routine name (no spaces): ");
+            String routineId = scanner.next();
+            while (user.getRoutineById(routineId) != null) {
+                System.out.println("Routine already exists. Enter new name: ");
+                routineId = scanner.next();
+            }
+            Routine routine = new Routine(routineId);
+            
+            System.out.println("Want to add any exercises? Enter 'n' to quit, otherwise enter the first exercise name: ");
+            String exAttr = scanner.next();
+            while (!exAttr.equals("n")) {
+                Exercise ex = new Exercise(exAttr);
+
+                System.out.println("Enter body part: ");
+                ex.setBodyPart(scanner.next());
+
+                System.out.println("Enter number of sets: ");
+                ex.setSets(scanner.nextInt());
+
+                System.out.println("Enter number of reps: ");
+                ex.setReps(scanner.nextInt());
+
+                routine.addExercise(ex);
+
+                System.out.println("Enter 'n' to quit, otherwise enter next exercise name: ");
+                exAttr = scanner.next();
+            }
+
+            user.addRoutine(routine);
+            System.out.println("Routine created!\n" + routine.toString());
         }
         else {
             System.out.println("No user selected.");
